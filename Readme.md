@@ -1,7 +1,7 @@
 # Учебный проект «Код и Магия» [![Build status][travis-image]][travis-url]
 
-* Студент: [Евгений Старинец](https://up.htmlacademy.ru/javascript/20/user/1340827).
-* Наставник: `Неизвестно`.
+- Студент: [Евгений Старинец](https://up.htmlacademy.ru/javascript/20/user/1340827).
+- Наставник: [Александр Мастеров](https://htmlacademy.ru/profile/id912463).
 
 ---
 
