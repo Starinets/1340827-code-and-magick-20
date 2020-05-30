@@ -13,10 +13,10 @@ var TEXT_WIDTH = 50;
 var BAR_WIDTH = 40;
 var BAR_MAX_HEIGHT = 150;
 
-function drawRectangle(ctx, x, y, width, height, color) {
+var drawRectangle = function (ctx, x, y, width, height, color) {
   ctx.fillStyle = color;
   ctx.fillRect(x, y, width, height);
-}
+};
 
 var setFontStyle = function (ctx, font, baseline, style) {
   ctx.font = font;
@@ -79,7 +79,8 @@ window.renderStatistics = function (ctx, names, times) {
     var currentY = CLOUD_HEIGHT - CONTENT_GAP - GAP - currenBarHeight;
     var currentTime = Math.floor(times[index]);
 
-    setFontStyle(ctx,
+    setFontStyle(
+        ctx,
         '16px PT Mono',
         'hanging',
         'rgb(0 0 0)'
@@ -91,7 +92,8 @@ window.renderStatistics = function (ctx, names, times) {
         CLOUD_HEIGHT - CONTENT_GAP
     );
 
-    ctx.fillText(currentTime,
+    ctx.fillText(
+        currentTime,
         currentX,
         currentY - CONTENT_GAP
     );
