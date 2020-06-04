@@ -31,12 +31,8 @@ var setFontStyle = function (ctx, font, baseline, style) {
   ctx.fillStyle = style;
 };
 
-var getRandomInteger = function (max) {
-  return Math.floor(Math.random() * Math.floor(max));
-};
-
 var getRandomColorSaturation = function (hue, lightness) {
-  var saturation = getRandomInteger(100);
+  var saturation = window.util.getRandomInteger(100);
   return 'hsl(' + hue + ', ' + saturation + '%, ' + lightness + '%)';
 };
 
