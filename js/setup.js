@@ -116,11 +116,11 @@ var getRandomItem = function (items, oldItem) {
 };
 
 var isEnterEvent = function (evt) {
-  return (evt.code === 'NumpadEnter' || evt.code === 'Enter') && true;
+  return evt.code === 'NumpadEnter' || evt.code === 'Enter';
 };
 
 var isEscapeEvent = function (evt) {
-  return evt.code === 'Escape' && true;
+  return evt.code === 'Escape';
 };
 
 var onRobeClick = function () {
