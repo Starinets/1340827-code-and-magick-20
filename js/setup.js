@@ -48,30 +48,31 @@ var getWizardsView = function () {
   return wizards;
 };
 
-var addWizardToFragment = function (wizard, wizardElement) {
-  wizardElement.querySelector('.setup-similar-label').textContent = wizard.name
-    + ' ' + wizard.lastName;
-  wizardElement.querySelector('.wizard-coat').style.fill = wizard.coatColor;
-  wizardElement.querySelector('.wizard-eyes').style.fill = wizard.eyesColor;
+var similarWizardTemplate = document.querySelector('#similar-wizard-template')
+    .content
+    .querySelector('.setup-similar-item');
+var setupSimilarLabel = similarWizardTemplate.querySelector('.setup-similar-label');
+var setupSimilarCoat = similarWizardTemplate.querySelector('.wizard-coat');
+var setupSimilarEyes = similarWizardTemplate.querySelector('.wizard-eyes');
 
-  return wizardElement;
+var similarSetup = document.querySelector('.setup-similar');
+var similarIListElement = document.querySelector('.setup-similar-list');
+var drawSimilarWizard = function (wizard) {
+  setupSimilarLabel.textContent = wizard.name + ' ' + wizard.lastName;
+  setupSimilarCoat.style.fill = wizard.coatColor;
+  setupSimilarEyes.style.fill = wizard.eyesColor;
 };
 
 var drawWizards = function (wizards) {
   var fragment = document.createDocumentFragment();
-  var similarWizardTemplate = document.querySelector('#similar-wizard-template')
-    .content
-    .querySelector('.setup-similar-item');
 
   wizards.forEach(function (wizard) {
-    var wizardElement = similarWizardTemplate.cloneNode(true);
-    fragment.appendChild(addWizardToFragment(wizard, wizardElement));
+    drawSimilarWizard(wizard);
+    fragment.appendChild(similarWizardTemplate.cloneNode(true));
   });
 
   return fragment;
 };
-
-var similarIListElement = document.querySelector('.setup-similar-list');
 
 var wizards = getWizardsView();
 
@@ -79,7 +80,7 @@ var fragment = drawWizards(wizards);
 
 similarIListElement.appendChild(fragment);
 
-document.querySelector('.setup-similar').classList.remove('hidden');
+similarSetup.classList.remove('hidden');
 
 /* ------------------------------ module4-task1 ----------------------------- */
 
