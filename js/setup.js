@@ -1,6 +1,6 @@
 'use strict';
 
-var FORM_ACTION = 'https://js.dump.academy/code-and-magick';
+var FORM_ACTION = 'https://javascript.pages.academy/code-and-magick';
 var WIZARD_NAMES = [
   'Иван',
   'Хуан Себастьян',
