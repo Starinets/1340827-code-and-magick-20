@@ -33,9 +33,9 @@
   };
 
   window.color = {
-    getRandomRobeColor: getRandomRobeColor,
-    getRandomEyesColor: getRandomEyesColor,
-    getRandomFireColor: getRandomFireColor,
-    getRandomColorSaturation: getRandomColorSaturation,
+    getRandomRobe: getRandomRobeColor,
+    getRandomEyes: getRandomEyesColor,
+    getRandomFire: getRandomFireColor,
+    getRandomSaturation: getRandomColorSaturation,
   };
 })();

@@ -1,7 +1,7 @@
 'use strict';
 
 (function () {
-  var getSimilarWizardsData = window.data.getSimilarWizardsData;
+  var getSimilarWizardsData = window.data.getSimilarWizards;
 
   var similarWizardTemplate = document.querySelector('#similar-wizard-template')
     .content

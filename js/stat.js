@@ -1,7 +1,7 @@
 'use strict';
 
 (function () {
-  var getRandomColorSaturation = window.color.getRandomColorSaturation;
+  var getRandomColorSaturation = window.color.getRandomSaturation;
 
   var CLOUD_WIDTH = 420;
   var CLOUD_HEIGHT = 270;

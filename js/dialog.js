@@ -4,9 +4,9 @@
   var isEnterEvent = window.util.isEnterEvent;
   var isEscapeEvent = window.util.isEscapeEvent;
 
-  var getRandomRobeColor = window.color.getRandomRobeColor;
-  var getRandomEyesColor = window.color.getRandomEyesColor;
-  var getRandomFireColor = window.color.getRandomFireColor;
+  var getRandomRobeColor = window.color.getRandomRobe;
+  var getRandomEyesColor = window.color.getRandomEyes;
+  var getRandomFireColor = window.color.getRandomFire;
 
   var FORM_ACTION = 'https://javascript.pages.academy/code-and-magick';
 

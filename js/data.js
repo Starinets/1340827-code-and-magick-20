@@ -2,8 +2,8 @@
 
 (function () {
   var getRandomItem = window.util.getRandomItem;
-  var getRandomRobeColor = window.color.getRandomRobeColor;
-  var getRandomEyesColor = window.color.getRandomEyesColor;
+  var getRandomRobeColor = window.color.getRandomRobe;
+  var getRandomEyesColor = window.color.getRandomEyes;
 
   var WIZARD_NAMES = [
     'Иван',
@@ -26,7 +26,7 @@
     'Ирвинг'
   ];
 
-  var getSimilarWizardsView = function () {
+  var getSimilarWizardsData = function () {
     var wizards = [];
 
     for (var i = 0; i < 4; i++) {
@@ -42,7 +42,7 @@
   };
 
   window.data = {
-    getSimilarWizardsData: getSimilarWizardsView,
+    getSimilarWizards: getSimilarWizardsData,
   };
 
 })();
