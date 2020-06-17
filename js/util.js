@@ -30,11 +30,25 @@
     return item;
   };
 
+  var showError = function (errorMessage) {
+    var errorPopup = document.createElement('div');
+
+    errorPopup.style.width = '100%';
+    errorPopup.style.height = '50px';
+    errorPopup.style.background = 'red';
+    errorPopup.style.textAlign = 'center';
+    errorPopup.style.lineHeight = '50px';
+
+    errorPopup.textContent = errorMessage;
+    document.body.insertAdjacentElement('afterBegin', errorPopup);
+  };
+
   window.util = {
     getRandomInteger: getRandomInteger,
     getRandomItem: getRandomItem,
     isEnterEvent: isEnterEvent,
     isEscapeEvent: isEscapeEvent,
+    showError: showError,
   };
 })();
 
