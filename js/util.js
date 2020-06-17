@@ -1,5 +1,8 @@
 'use strict';
 
+var SHOW_ERROR_POPUP_TIMEOUT = 3000;
+var errorPopup;
+
 (function () {
   var EventKeyCode = {
     ENTER: 'Enter',
@@ -30,8 +33,8 @@
     return item;
   };
 
-  var showError = function (errorMessage) {
-    var errorPopup = document.createElement('div');
+  var createErrorPopup = function () {
+    errorPopup = document.createElement('div');
 
     errorPopup.style.width = '100%';
     errorPopup.style.height = '50px';
@@ -39,9 +42,22 @@
     errorPopup.style.textAlign = 'center';
     errorPopup.style.lineHeight = '50px';
 
-    errorPopup.textContent = errorMessage;
+    errorPopup.classList = 'hidden';
+
     document.body.insertAdjacentElement('afterBegin', errorPopup);
   };
+
+  var hideError = function () {
+    errorPopup.classList.add('hidden');
+  };
+
+  var showError = function (errorMessage) {
+    errorPopup.textContent = errorMessage;
+    errorPopup.classList.remove('hidden');
+    setTimeout(hideError, SHOW_ERROR_POPUP_TIMEOUT);
+  };
+
+  createErrorPopup();
 
   window.util = {
     getRandomInteger: getRandomInteger,
