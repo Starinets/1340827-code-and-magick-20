@@ -1,6 +1,9 @@
 'use strict';
 
 (function () {
+  var postWizardData = window.backend.save;
+
+  var showError = window.util.showError;
   var isEnterEvent = window.util.isEnterEvent;
   var isEscapeEvent = window.util.isEscapeEvent;
 
@@ -70,6 +73,22 @@
     }
   };
 
+  var onSubmit = function (evt) {
+    evt.preventDefault();
+
+    var onLoad = function () {
+      hideWizardSetup();
+    };
+
+    var onError = function (error) {
+      showError(error);
+    };
+
+    var data = new FormData(setupWizardForm);
+
+    postWizardData(data, onLoad, onError);
+  };
+
   var showWizardSetup = function () {
     setupWizard.classList.remove('hidden');
 
@@ -83,6 +102,8 @@
     setupOpenButton.removeEventListener('keydown', onSetupOpenButtonKeydown);
     setupCloseButton.addEventListener('keydown', onSetupCloseButtonKeydown);
     document.addEventListener('keydown', onKeydown);
+
+    setupWizardForm.addEventListener('submit', onSubmit);
   };
 
   var hideWizardSetup = function () {
@@ -98,6 +119,8 @@
     setupOpenButton.addEventListener('keydown', onSetupOpenButtonKeydown);
     setupCloseButton.removeEventListener('keydown', onSetupCloseButtonKeydown);
     document.removeEventListener('keydown', onKeydown);
+
+    setupWizardForm.removeEventListener('submit', onSubmit);
   };
 
   setupWizardForm.action = FORM_ACTION;
