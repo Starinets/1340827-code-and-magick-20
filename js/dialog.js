@@ -23,12 +23,24 @@
     wizardRobeColor.value
         = wizardRobe.style.fill
         = window.color.getRandomRobe(wizardRobeColor.value);
+
+    var robeColor = wizardRobeColor.value;
+    var eyesColor = wizardEyesColor.value;
+    window.debounce(function () {
+      window.similar.drawWizards(robeColor, eyesColor);
+    })();
   };
 
   var onWizardEyesClick = function () {
     wizardEyesColor.value
         = wizardEyes.style.fill
         = window.color.getRandomEyes(wizardEyesColor.value);
+
+    var robeColor = wizardRobeColor.value;
+    var eyesColor = wizardEyesColor.value;
+    window.debounce(function () {
+      window.similar.drawWizards(robeColor, eyesColor);
+    })();
   };
 
   var onWizardFireClick = function () {
@@ -94,6 +106,8 @@
     document.addEventListener('keydown', onKeydown);
 
     setupWizardForm.addEventListener('submit', onSetupWizardFormSubmit);
+
+    window.similar.drawWizards(wizardEyesColor.value, wizardRobeColor.value);
   };
 
   var hideWizardSetup = function () {
