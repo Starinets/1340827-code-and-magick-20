@@ -1,8 +1,6 @@
 'use strict';
 
 (function () {
-  var getRandomColorSaturation = window.color.getRandomSaturation;
-
   var CLOUD_WIDTH = 420;
   var CLOUD_HEIGHT = 270;
   var CLOUD_X = 100;
@@ -49,7 +47,7 @@
 
       ctx.fillStyle = name === 'Вы' ?
         'rgb(255, 0, 0)' :
-        getRandomColorSaturation(240, 50);
+        window.color.getRandomSaturation(240, 50);
 
       ctx.fillRect(barX, barY, BAR_WIDTH, barHeight);
     });

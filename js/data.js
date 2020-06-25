@@ -1,19 +1,16 @@
 'use strict';
 
 (function () {
-  var loadSimilarWizard = window.backend.load;
-  var showError = window.util.showError;
-
   var getSimilarWizardsData = function (cb) {
     var onSuccess = function (data) {
       cb(data);
     };
 
     var onError = function (error) {
-      showError(error);
+      window.util.showError(error);
     };
 
-    loadSimilarWizard(onSuccess, onError);
+    window.backend.load(onSuccess, onError);
   };
 
   window.data = {

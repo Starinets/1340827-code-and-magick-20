@@ -1,9 +1,6 @@
 'use strict';
 
 (function () {
-  var getRandomInteger = window.util.getRandomInteger;
-  var getRandomItem = window.util.getRandomItem;
-
   var ROBE_COLORS = [
     'rgb(101, 137, 164)',
     'rgb(241, 43, 107)',
@@ -16,19 +13,19 @@
   var FIRE_COLORS = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
 
   var getRandomRobeColor = function (oldColor) {
-    return getRandomItem(ROBE_COLORS, oldColor);
+    return window.util.getRandomItem(ROBE_COLORS, oldColor);
   };
 
   var getRandomEyesColor = function (oldColor) {
-    return getRandomItem(EYES_COLORS, oldColor);
+    return window.util.getRandomItem(EYES_COLORS, oldColor);
   };
 
   var getRandomFireColor = function (oldColor) {
-    return getRandomItem(FIRE_COLORS, oldColor);
+    return window.util.getRandomItem(FIRE_COLORS, oldColor);
   };
 
   var getRandomColorSaturation = function (hue, lightness) {
-    var saturation = getRandomInteger(100);
+    var saturation = window.util.getRandomInteger(100);
     return 'hsl(' + hue + ', ' + saturation + '%, ' + lightness + '%)';
   };
 

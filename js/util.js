@@ -1,14 +1,14 @@
 'use strict';
 
-var SHOW_ERROR_POPUP_TIMEOUT = 3000;
-var errorPopup;
-
 (function () {
+  var SHOW_ERROR_POPUP_TIMEOUT = 3000;
   var EventKeyCode = {
     ENTER: 'Enter',
     NUMPAD_ENTER: 'NumpadEnter',
     ESCAPE: 'Escape',
   };
+
+  var errorPopup;
 
   var isEnterEvent = function (evt) {
     return evt.code === EventKeyCode.ENTER
@@ -42,7 +42,7 @@ var errorPopup;
     errorPopup.style.textAlign = 'center';
     errorPopup.style.lineHeight = '50px';
 
-    errorPopup.classList = 'hidden';
+    errorPopup.classList.add('hidden');
 
     document.body.insertAdjacentElement('afterBegin', errorPopup);
   };

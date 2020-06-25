@@ -1,9 +1,7 @@
 'use strict';
 
 (function () {
-  var getSimilarWizardsData = window.data.getSimilarWizards;
-
-  var COUNT_OF_WIZARDS = 4;
+  var WIZARD_COUNT = 4;
 
   var similarWizardTemplate = document.querySelector('#similar-wizard-template')
     .content
@@ -27,7 +25,7 @@
   var drawWizards = function (wizards) {
     var fragment = document.createDocumentFragment();
 
-    for (var index = 0; index < COUNT_OF_WIZARDS; index++) {
+    for (var index = 0; index < WIZARD_COUNT; index++) {
       var similarWizardItem = similarWizardTemplate.cloneNode(true);
       fragment.appendChild(tuneSimilarWizard(similarWizardItem, wizards[index]));
     }
@@ -36,5 +34,5 @@
     similarSetup.classList.remove('hidden');
   };
 
-  getSimilarWizardsData(drawWizards);
+  window.data.getSimilarWizards(drawWizards);
 })();
