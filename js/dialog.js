@@ -1,16 +1,6 @@
 'use strict';
 
 (function () {
-  var postWizardData = window.backend.save;
-
-  var showError = window.util.showError;
-  var isEnterEvent = window.util.isEnterEvent;
-  var isEscapeEvent = window.util.isEscapeEvent;
-
-  var getRandomRobeColor = window.color.getRandomRobe;
-  var getRandomEyesColor = window.color.getRandomEyes;
-  var getRandomFireColor = window.color.getRandomFire;
-
   var FORM_ACTION = 'https://javascript.pages.academy/code-and-magick';
 
   var setupWizard = document.querySelector('.setup');
@@ -32,19 +22,31 @@
   var onWizardRobeClick = function () {
     wizardRobeColor.value
         = wizardRobe.style.fill
-        = getRandomRobeColor(wizardRobeColor.value);
+        = window.color.getRandomRobe(wizardRobeColor.value);
+
+    var robeColor = wizardRobeColor.value;
+    var eyesColor = wizardEyesColor.value;
+    window.debounce(function () {
+      window.similar.drawWizards(robeColor, eyesColor);
+    })();
   };
 
   var onWizardEyesClick = function () {
     wizardEyesColor.value
         = wizardEyes.style.fill
-        = getRandomEyesColor(wizardEyesColor.value);
+        = window.color.getRandomEyes(wizardEyesColor.value);
+
+    var robeColor = wizardRobeColor.value;
+    var eyesColor = wizardEyesColor.value;
+    window.debounce(function () {
+      window.similar.drawWizards(robeColor, eyesColor);
+    })();
   };
 
   var onWizardFireClick = function () {
     wizardFireColor.value
         = wizardFire.style.background
-        = getRandomFireColor(wizardFireColor.value);
+        = window.color.getRandomFire(wizardFireColor.value);
   };
 
   var onSetupOpenButtonClick = function () {
@@ -56,24 +58,24 @@
   };
 
   var onSetupOpenButtonKeydown = function (evt) {
-    if (isEnterEvent(evt)) {
+    if (window.util.isEnterEvent(evt)) {
       showWizardSetup();
     }
   };
 
   var onSetupCloseButtonKeydown = function (evt) {
-    if (isEnterEvent(evt)) {
+    if (window.util.isEnterEvent(evt)) {
       hideWizardSetup();
     }
   };
 
   var onKeydown = function (evt) {
-    if (isEscapeEvent(evt) && evt.target !== wizardNameInput) {
+    if (window.util.isEscapeEvent(evt) && evt.target !== wizardNameInput) {
       hideWizardSetup();
     }
   };
 
-  var onSubmit = function (evt) {
+  var onSetupWizardFormSubmit = function (evt) {
     evt.preventDefault();
 
     var onLoad = function () {
@@ -81,12 +83,12 @@
     };
 
     var onError = function (error) {
-      showError(error);
+      window.util.showError(error);
     };
 
     var data = new FormData(setupWizardForm);
 
-    postWizardData(data, onLoad, onError);
+    window.backend.save(data, onLoad, onError);
   };
 
   var showWizardSetup = function () {
@@ -103,7 +105,9 @@
     setupCloseButton.addEventListener('keydown', onSetupCloseButtonKeydown);
     document.addEventListener('keydown', onKeydown);
 
-    setupWizardForm.addEventListener('submit', onSubmit);
+    setupWizardForm.addEventListener('submit', onSetupWizardFormSubmit);
+
+    window.similar.drawWizards(wizardEyesColor.value, wizardRobeColor.value);
   };
 
   var hideWizardSetup = function () {
@@ -120,7 +124,7 @@
     setupCloseButton.removeEventListener('keydown', onSetupCloseButtonKeydown);
     document.removeEventListener('keydown', onKeydown);
 
-    setupWizardForm.removeEventListener('submit', onSubmit);
+    setupWizardForm.removeEventListener('submit', onSetupWizardFormSubmit);
   };
 
   setupWizardForm.action = FORM_ACTION;
